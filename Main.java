@@ -4,14 +4,11 @@ import java.io.*;
 public class Main {
     public static void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        ArrayList<Izdelek> izdelki = HelperFunctions.readIzdelki();
+        ArrayList<Izdelek> izdelki = Izdelek.readIzdelki();
 
-        // Ovitek cc = new Ovitek("Prelep", 5, false, 0, 3);
-        // izdelki.add(new Ovitek("Prelep", 5, false, 0, 3));
-
-        // System.out.println(izdelki.get(0));
         while(true) {
             try {
+                izdelki = Izdelek.readIzdelki();   // Hej kam to
                 System.out.println("Kaj zelite storiti? (vnesite stevilko)");
                 System.out.println("0 -Izhod iz programa");
                 System.out.println("1 -izpis vseh izdelkov");
@@ -31,10 +28,8 @@ public class Main {
                         HelperFunctions.writeInFile(izdelki);
                         break;
                     case 3:
-                        HelperFunctions.productEntry(izdelki);
-                        // izdelki = HelperFunctions.readIzdelki();
+                        Izdelek.productEntry(izdelki);
                         break;
-
                 }
 
 
@@ -43,10 +38,6 @@ public class Main {
     
             }
         }
-
-
-        // HelperFunctions.readIzdelki();
-        // System.out.println("asdf");
         
     }
     

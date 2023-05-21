@@ -20,7 +20,7 @@ public class MobilniTelefon extends MobilnaOprema {
             return this.podkategorija + " " + this.imeIzdelka + " " + this.cena + " " + this.vAkciji + " " + this.akcijaProcentov + " " + this.zaloga + " " + this.kategorija;
         }
 
-        public static ArrayList<Izdelek> novMobilniTelefon(ArrayList<Izdelek> izdelki, String imeIzdelka) throws Exception{
+        public static void novMobilniTelefon(ArrayList<Izdelek> izdelki, String imeIzdelka) throws Exception{
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
             System.out.println("Vnesi ceno: ");
@@ -34,6 +34,7 @@ public class MobilniTelefon extends MobilnaOprema {
 
             MobilniTelefon izdelek = new MobilniTelefon(imeIzdelka, cena, vAkciji, akcijaProcentov, zaloga);
             izdelki.add(izdelek);
-            return izdelki;
+            HelperFunctions.writeInFile(izdelki);
+            System.out.println("Izdelek vnešen");
         }
 }

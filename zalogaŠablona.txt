@@ -1,5 +1,0 @@
-konstruktor, imeIzdelka, cena, vAkciji, akcijaProcentov, zaloga, kategorija, podkategorija
-
-
-Ovitek e5xr 10 false 0 35
-
