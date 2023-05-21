@@ -54,34 +54,34 @@ public class Izdelek {
         return this.zaloga;
     }
 
-    public static ArrayList<Izdelek> readIzdelki() throws Exception{
-        BufferedReader br = new BufferedReader(new FileReader("zaloga.txt"));
+    public static ArrayList<Izdelek> readIzdelki(String datoteka) throws Exception{
+        BufferedReader br = new BufferedReader(new FileReader(datoteka));
 
-        ArrayList<Izdelek> izdelki = new ArrayList<Izdelek>();
+        ArrayList<Izdelek> izdelkii = new ArrayList<Izdelek>();
         String s;
         while((s=br.readLine()) != null) {
             String[] arr = s.split(" ");
 
             switch(arr[0]) {
                 case "Ovitek":
-                    izdelki.add(new Ovitek(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], arr[8] ));
+                    izdelkii.add(new Ovitek(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], arr[8] ));
                     break;
                 case "MobilniTelefon":
-                    izdelki.add(new MobilniTelefon(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], Integer.parseInt(arr[8]) ));
+                    izdelkii.add(new MobilniTelefon(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], Integer.parseInt(arr[8]) ));
                     break;
                 case "Slusalke":
-                    izdelki.add(new Slusalke(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], Boolean.parseBoolean(arr[8]) ));
+                    izdelkii.add(new Slusalke(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], Boolean.parseBoolean(arr[8]) ));
                     break;
                 case "NamizniRacunalnik":
-                    izdelki.add(new NamizniRacunalnik(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], Boolean.parseBoolean(arr[8]) ));
+                    izdelkii.add(new NamizniRacunalnik(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], Boolean.parseBoolean(arr[8]) ));
                     break;
                 case "PrenosniRacunalnik":
-                    izdelki.add(new PrenosniRacunalnik(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], Integer.parseInt(arr[8]) ));
+                    izdelkii.add(new PrenosniRacunalnik(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], Integer.parseInt(arr[8]) ));
                     break;
             }
         }
         br.close();
-        return izdelki;
+        return izdelkii;
     }
 
 
@@ -155,6 +155,50 @@ public class Izdelek {
             }
 
             System.out.println("Nova zaloga izdelka " + izdelek.imeIzdelka + ": "+ izdelek.zaloga);
+            HelperFunctions.writeInFile(izdelki);
+        }
+        else {
+            System.out.println("Tega izdelka ni v sistemu");
+        }
+    }
+
+    public static void prodaja(ArrayList<Izdelek> izdelki) throws Exception{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        System.out.println("Vnesi ime izdelka za prodajo: ");
+        String imeIzdelka = br.readLine();
+        Izdelek izdelek = null;
+        for(int i=0; i<izdelki.size(); i++) {
+            if(izdelki.get(i).imeIzdelka.equals(imeIzdelka)) {
+                izdelek = izdelki.get(i);
+                break;
+            }
+        }
+        if(izdelek instanceof Izdelek) {
+            System.out.println("Izdelek je v sistemu");
+            System.out.println("Trenutno izdelkov na voljo: " + izdelek.zaloga);
+            System.out.println("Koliko izdelkov zelite prodati");
+            int n = Integer.parseInt(br.readLine());
+            if(n < 1) {
+                System.out.println("Ne morete prodati manj kot 1 izdelek");
+                throw new Exception();
+            }
+            izdelek.zaloga -= n;
+            if(izdelek.zaloga < 0) {
+                System.out.println("Ni dovolj izdelkov na zalogi");
+                throw new Exception();
+            }
+            System.out.println("Nova zaloga izdelka " + izdelek.imeIzdelka + ": "+ izdelek.zaloga);
+            HelperFunctions.writeInFileSold(izdelek, n);
+            
+            BufferedReader brBlagajna = new BufferedReader(new FileReader("blagajna.txt"));
+            float skupajZasluzek = Float.parseFloat(brBlagajna.readLine().split(" ")[1]);
+            brBlagajna.close();
+            skupajZasluzek += (n * izdelek.cena);
+            BufferedWriter bwBlagajna = new BufferedWriter(new FileWriter("blagajna.txt"));
+            String skupajZasluzekString = "SkupajZasluzek= " + skupajZasluzek;
+            bwBlagajna.write(skupajZasluzekString);
+            bwBlagajna.close();
             HelperFunctions.writeInFile(izdelki);
         }
         else {

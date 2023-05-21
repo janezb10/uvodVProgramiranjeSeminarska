@@ -21,4 +21,35 @@ public class HelperFunctions {
         }
     }
 
+    public static void writeInFileSold(Izdelek izdelekP, int n) throws Exception{
+        ArrayList<Izdelek> prodaniIzdelki = Izdelek.readIzdelki("prodaniIzdelki.txt");
+        
+        String str = "";
+        
+        Izdelek izdelek = null;
+        for(int i=0; i<prodaniIzdelki.size(); i++) {
+            if(prodaniIzdelki.get(i).imeIzdelka.equals(izdelekP.imeIzdelka)) {
+                izdelek = prodaniIzdelki.get(i);
+                break;
+            }
+        }
+        if(izdelek instanceof Izdelek) {
+            izdelek.zaloga += n;
+
+        }
+        else {
+            System.out.println("Tega izdelka ni v sistemu");
+            int zaloga = izdelekP.zaloga;
+            izdelekP.zaloga = n;
+            str += (izdelekP + "\n");
+            izdelekP.zaloga = zaloga;
+        }
+        for(int i=0; i<prodaniIzdelki.size(); i++) {
+            str += (prodaniIzdelki.get(i) + "\n");
+        }
+        
+        BufferedWriter bw = new BufferedWriter(new FileWriter("prodaniIzdelki.txt"));
+        bw.write(str);
+        bw.close();
+    }
 }
