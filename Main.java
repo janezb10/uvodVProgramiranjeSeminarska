@@ -9,6 +9,7 @@ public class Main {
         while(true) {
             try {
                 izdelki = Izdelek.readIzdelki("zaloga.txt");
+                System.out.println();
                 System.out.println("Kaj zelite storiti? (vnesite stevilko)");
                 System.out.println("0 -Izhod iz programa");
                 System.out.println("1 -izpis vseh izdelkov");
@@ -16,7 +17,10 @@ public class Main {
                 System.out.println("3 -brisanje odpisanih izdelkov");
                 System.out.println("4 -prodaja izdelkov");
                 System.out.println("5 -vracilo izdelkov");
-                System.out.println("6 -evidenca blagajne");
+                System.out.println("6 -prikaz stanja blagajne");
+                System.out.println("7 -izpis kupljenih");
+                System.out.println("8 -izpis vrnjenih");
+                System.out.println("9 -iskanje izdelkov");
 
 
                 int i = Integer.parseInt(br.readLine());
