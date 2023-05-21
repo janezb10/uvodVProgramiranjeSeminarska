@@ -36,7 +36,7 @@ public class Main {
                         Izdelek.prodaja(izdelki);
                         break;
                     case 5:
-
+                        Izdelek.vracilo(izdelki);
                         break;
                 }
 

@@ -209,4 +209,59 @@ public class Izdelek {
             System.out.println("Tega izdelka ni v sistemu");
         }
     }
+
+    public static void vracilo(ArrayList<Izdelek> izdelki) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Vpisite ime izdelka, ki ga zelite vrniti: ");
+        String imeIzdelka = br.readLine();
+        System.out.println("Vpisite koliko izdelkov zelite vrniti: ");
+        int kolicina = Integer.parseInt(br.readLine());
+        if(kolicina <= 0) {
+            System.out.println("Ne morete vrniti manj kot 1 izdelek");
+            throw new Exception();
+        }
+
+        Izdelek izdelek = null;
+        for(int i=0; i<izdelki.size(); i++) {
+            if(izdelki.get(i).imeIzdelka.equals(imeIzdelka)) {
+                izdelek = izdelki.get(i);
+                break;
+            }
+        }
+
+        ArrayList<Izdelek> prodaniIzdelki = Izdelek.readIzdelki("prodaniIzdelki.txt");
+        Izdelek prodaniIzdelek = null;
+        for(int i=0; i<prodaniIzdelki.size(); i++) {
+            if(prodaniIzdelki.get(i).imeIzdelka.equals(imeIzdelka)) {
+                prodaniIzdelek = prodaniIzdelki.get(i);
+                break;
+            }
+        }
+        if(prodaniIzdelek == null || (prodaniIzdelek.zaloga - kolicina < 0)) {
+            System.out.println("Nismo prodali toliko izdelkov kot jiz zelite vrniti");
+            throw new Exception();
+        }
+
+        if(izdelek instanceof Izdelek) {
+            System.out.println("Izdelek se lahko vrne");
+            izdelek.zaloga += kolicina;
+            prodaniIzdelek.zaloga -= kolicina;
+
+            System.out.println("Nova zaloga izdelka " + izdelek.imeIzdelka + ": "+ izdelek.zaloga);
+            HelperFunctions.writeInFileSold(prodaniIzdelek, -kolicina);
+            
+            BufferedReader brBlagajna = new BufferedReader(new FileReader("blagajna.txt"));
+            float skupajZasluzek = Float.parseFloat(brBlagajna.readLine().split(" ")[1]);
+            brBlagajna.close();
+            skupajZasluzek -= izdelek.vAkciji ? (kolicina * izdelek.cena * izdelek.akcijaProcentov) : (kolicina * izdelek.cena);
+            BufferedWriter bwBlagajna = new BufferedWriter(new FileWriter("blagajna.txt"));
+            String skupajZasluzekString = "SkupajZasluzek= " + skupajZasluzek;
+            bwBlagajna.write(skupajZasluzekString);
+            bwBlagajna.close();
+            HelperFunctions.writeInFile(izdelki);
+        }
+        else {
+            System.out.println("Tega ne prodajamo");
+        }
+    }
 }
