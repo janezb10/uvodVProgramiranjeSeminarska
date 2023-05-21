@@ -1,0 +1,1 @@
+NamizniRacunalnik thor5 1000.0 true 0.5 1 Racunalniki intel true

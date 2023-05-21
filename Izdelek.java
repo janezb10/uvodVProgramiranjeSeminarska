@@ -54,6 +54,10 @@ public class Izdelek {
         return this.zaloga;
     }
 
+    public String izpisi() {
+        return "do not remove this method";
+    }
+
     public static ArrayList<Izdelek> readIzdelki(String datoteka) throws Exception{
         BufferedReader br = new BufferedReader(new FileReader(datoteka));
 
@@ -194,7 +198,7 @@ public class Izdelek {
             BufferedReader brBlagajna = new BufferedReader(new FileReader("blagajna.txt"));
             float skupajZasluzek = Float.parseFloat(brBlagajna.readLine().split(" ")[1]);
             brBlagajna.close();
-            skupajZasluzek += (n * izdelek.cena);
+            skupajZasluzek += izdelek.vAkciji ? (n * izdelek.cena * izdelek.akcijaProcentov) : (n * izdelek.cena);
             BufferedWriter bwBlagajna = new BufferedWriter(new FileWriter("blagajna.txt"));
             String skupajZasluzekString = "SkupajZasluzek= " + skupajZasluzek;
             bwBlagajna.write(skupajZasluzekString);

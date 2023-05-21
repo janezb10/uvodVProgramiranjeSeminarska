@@ -24,6 +24,21 @@ public class Slusalke extends MobilnaOprema {
         return this.podkategorija + " " + this.imeIzdelka + " " + this.cena + " " + this.vAkciji + " " + this.akcijaProcentov + " " + this.zaloga + " " + this.kategorija + " " + this.proizvajalec + " " + this.noiseCancelling;
     }
 
+    @Override
+    public String izpisi() {
+        String str = this.imeIzdelka;
+        str += " cena: " + this.cena;
+        str += " zaloga: " + this.zaloga;
+        str += " akcija: " + this.vAkciji;
+        str += " akcija Procentov: " + this.akcijaProcentov;
+        str += " kategorija: " + this.kategorija;
+        str += " podkategorija: " + this.podkategorija;
+
+        str += " proizvajalec: " + this.proizvajalec;
+        str += " noise cancellation " + this.noiseCancelling;
+        return str;
+    }
+
     public static void novSlusalke(ArrayList<Izdelek> izdelki, String imeIzdelka, String proizvajalec) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 

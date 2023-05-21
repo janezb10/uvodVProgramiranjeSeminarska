@@ -25,6 +25,21 @@ public class Ovitek extends MobilnaOprema {
         return this.podkategorija + " " + this.imeIzdelka + " " + this.cena + " " + this.vAkciji + " " + this.akcijaProcentov + " " + this.zaloga + " " + this.kategorija + " " + this.proizvajalec + " " + this.barva;
     }
 
+    @Override
+    public String izpisi() {
+        String str = this.imeIzdelka;
+        str += " cena: " + this.cena;
+        str += " zaloga: " + this.zaloga;
+        str += " akcija: " + this.vAkciji;
+        str += " akcija Procentov: " + this.akcijaProcentov;
+        str += " kategorija: " + this.kategorija;
+        str += " podkategorija: " + this.podkategorija;
+
+        str += " proizvajalec: " + this.proizvajalec;
+        str += " barva: " + this.barva;
+        return str;
+    }
+
     public static void novOvitek(ArrayList<Izdelek> izdelki, String imeIzdelka, String proizvajalec) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 

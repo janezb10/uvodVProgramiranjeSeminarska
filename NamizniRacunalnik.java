@@ -24,6 +24,21 @@ public class NamizniRacunalnik extends Racunalnik{
         return this.podkategorija + " " + this.imeIzdelka + " " + this.cena + " " + this.vAkciji + " " + this.akcijaProcentov + " " + this.zaloga + " " + this.kategorija + " " + this.procesor + " " + this.namescenOperacijskiSistem;
     }
 
+    @Override
+    public String izpisi() {
+        String str = this.imeIzdelka;
+        str += " cena: " + this.cena;
+        str += " zaloga: " + this.zaloga;
+        str += " akcija: " + this.vAkciji;
+        str += " akcija Procentov: " + this.akcijaProcentov;
+        str += " kategorija: " + this.kategorija;
+        str += " podkategorija: " + this.podkategorija;
+
+        str += " procesor: " + this.procesor;
+        str += " namescen operacijski sistem: " + this.namescenOperacijskiSistem;
+        return str;
+    }
+
     public static void novNamizniRacunalnik(ArrayList<Izdelek> izdelki, String imeIzdelka, String procesor) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 

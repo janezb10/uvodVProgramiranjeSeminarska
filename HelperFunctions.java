@@ -16,9 +16,11 @@ public class HelperFunctions {
     }
 
     public static void writeItOut(ArrayList<Izdelek> izdelki) {
+        System.out.println();
         for(int i=0; i<izdelki.size(); i++) {
-            System.out.println(izdelki.get(i));
+            System.out.println(izdelki.get(i).izpisi());
         }
+        System.out.println();
     }
 
     public static void writeInFileSold(Izdelek izdelekP, int n) throws Exception{
@@ -38,7 +40,7 @@ public class HelperFunctions {
 
         }
         else {
-            System.out.println("Tega izdelka ni v sistemu");
+            System.out.println("Ta izdelek je prodan prvic");
             int zaloga = izdelekP.zaloga;
             izdelekP.zaloga = n;
             str += (izdelekP + "\n");

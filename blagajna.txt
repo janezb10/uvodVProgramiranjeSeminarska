@@ -1,1 +1,1 @@
-SkupajZasluzek= 0
+SkupajZasluzek= 500.0

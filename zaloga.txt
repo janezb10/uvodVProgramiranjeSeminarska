@@ -1,8 +1,9 @@
 podkategorija, imeIzdelka, cena, vAkciji, akcijaProcentov, zaloga, kategorija...
 MobilniTelefon Iphone 990.0 false 0.0 30 MobilnaOprema Apple 1500
-Ovitek Obitek 15.0 false 0.0 18 MobilnaOprema Nudl zelena
+Ovitek Obitek 15.0 false 0.0 16 MobilnaOprema Nudl zelena
 PrenosniRacunalnik PrenosniB 1500.0 false 0.0 10 Racunalniki intel 17
-Ovitek Lepi 9.0 false 0.0 10 MobilnaOprema Kinezar Rdeca
+Ovitek Lepi 9.0 false 0.0 7 MobilnaOprema Kinezar Rdeca
 Slusalke Tune510BT 49.9 false 0.0 100 MobilnaOprema JBL false
 PrenosniRacunalnik Aspire5 700.0 false 0.0 40 Racunalniki AMD 15
 PrenosniRacunalnik giga3 1000.0 false 0.0 10 Racunalniki Intel 15
+NamizniRacunalnik thor5 1000.0 true 0.5 9 Racunalniki intel true
