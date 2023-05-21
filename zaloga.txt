@@ -1,6 +1,8 @@
 podkategorija, imeIzdelka, cena, vAkciji, akcijaProcentov, zaloga, kategorija...
-Ovitek e5xr 10.0 true 0.0 148 MobilnaOprema
-MobilniTelefon aaaa 500.0 true 0.5 10 MobilnaOprema
-Ovitek obitek 10.0 false 0.0 3 MobilnaOprema
-PrenosniRacunalnik prenosni5 1000.0 false 0.0 10 Računalniki
-NamizniRacunalnik namizniStolp 890.0 false 0.0 20 Računalniki
+MobilniTelefon Iphone 990.0 false 0.0 55 MobilnaOprema Apple 1500
+Ovitek Obitek 15.0 false 0.0 18 MobilnaOprema Nudl zelena
+PrenosniRacunalnik PrenosniB 1500.0 false 0.0 10 Racunalniki intel 17
+Ovitek Lepi 9.0 false 0.0 11 MobilnaOprema Kinezar Rdeca
+Slusalke Tune510BT 49.9 false 0.0 100 MobilnaOprema JBL false
+PrenosniRacunalnik Aspire5 700.0 false 0.0 43 Racunalniki AMD 15
+PrenosniRacunalnik giga3 1000.0 false 0.0 1 Racunalniki Intel 15

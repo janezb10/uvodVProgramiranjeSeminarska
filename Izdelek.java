@@ -3,8 +3,6 @@ import java.util.*;
 
 public class Izdelek {
     String imeIzdelka;
-    // String kategorija;
-    // String podkategorija;
     float cena;
     boolean vAkciji;
     float akcijaProcentov;
@@ -66,19 +64,19 @@ public class Izdelek {
 
             switch(arr[0]) {
                 case "Ovitek":
-                    izdelki.add(new Ovitek(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5])));
+                    izdelki.add(new Ovitek(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], arr[8] ));
                     break;
                 case "MobilniTelefon":
-                    izdelki.add(new MobilniTelefon(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5])));
+                    izdelki.add(new MobilniTelefon(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], Integer.parseInt(arr[8]) ));
                     break;
                 case "Slusalke":
-                    izdelki.add(new Slusalke(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5])));
+                    izdelki.add(new Slusalke(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], Boolean.parseBoolean(arr[8]) ));
                     break;
                 case "NamizniRacunalnik":
-                    izdelki.add(new NamizniRacunalnik(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5])));
+                    izdelki.add(new NamizniRacunalnik(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], Boolean.parseBoolean(arr[8]) ));
                     break;
                 case "PrenosniRacunalnik":
-                    izdelki.add(new PrenosniRacunalnik(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5])));
+                    izdelki.add(new PrenosniRacunalnik(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], Integer.parseInt(arr[8]) ));
                     break;
             }
         }
@@ -93,7 +91,7 @@ public class Izdelek {
         String imeIzdelka = br.readLine();
         Izdelek izdelek = null;
         for(int i=0; i<izdelki.size(); i++) {
-            System.out.println(izdelki.get(i).imeIzdelka);
+            // System.out.println(izdelki.get(i).imeIzdelka);
             if(izdelki.get(i).imeIzdelka.equals(imeIzdelka)) {
                 izdelek = izdelki.get(i);
                 break;

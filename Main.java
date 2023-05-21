@@ -4,11 +4,11 @@ import java.io.*;
 public class Main {
     public static void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        ArrayList<Izdelek> izdelki = Izdelek.readIzdelki();
+        ArrayList<Izdelek> izdelki;
 
         while(true) {
             try {
-                izdelki = Izdelek.readIzdelki();   // Hej kam to
+                izdelki = Izdelek.readIzdelki();
                 System.out.println("Kaj zelite storiti? (vnesite stevilko)");
                 System.out.println("0 -Izhod iz programa");
                 System.out.println("1 -izpis vseh izdelkov");
@@ -40,7 +40,4 @@ public class Main {
         }
         
     }
-    
-
-
 }
