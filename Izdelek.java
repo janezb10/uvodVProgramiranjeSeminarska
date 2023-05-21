@@ -99,8 +99,13 @@ public class Izdelek {
         }
         if(izdelek instanceof Izdelek) {
             System.out.println("Izdelek je ze v sistemu");
+            System.out.println("Trenutno izdelkov na voljo: " + izdelek.zaloga);
             System.out.println("Koliko izdelkov zelite dodati?");
             int n = Integer.parseInt(br.readLine());
+            if(n < 0) {
+                System.out.println("Ne morete dodati manj kot 0 izdelkov");
+                throw new Exception();
+            }
             izdelek.zaloga += n;
             System.out.println("Nova zaloga izdelka " + izdelek.imeIzdelka + ": "+ izdelek.zaloga);
         }
@@ -123,4 +128,37 @@ public class Izdelek {
 
     }
 
+    public static void productRemove(ArrayList<Izdelek> izdelki) throws Exception{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Vnesi ime izdelka: ");
+        String imeIzdelka = br.readLine();
+        Izdelek izdelek = null;
+        for(int i=0; i<izdelki.size(); i++) {
+            // System.out.println(izdelki.get(i).imeIzdelka);
+            if(izdelki.get(i).imeIzdelka.equals(imeIzdelka)) {
+                izdelek = izdelki.get(i);
+                break;
+            }
+        }
+        if(izdelek instanceof Izdelek) {
+            System.out.println("Izdelek je v sistemu");
+            System.out.println("Trenutno izdelkov na voljo: " + izdelek.zaloga);
+            System.out.println("Koliko izdelkov zelite odstraniti?");
+            int n = Integer.parseInt(br.readLine());
+            if(n < 0) {
+                System.out.println("ne morete odstraniti manj kot 0 izdelkov");
+            }
+            izdelek.zaloga -= n;
+            if(izdelek.zaloga < 0) {
+                System.out.println("Ni dovolj izdelkov na zalogi");
+                throw new Exception();
+            }
+
+            System.out.println("Nova zaloga izdelka " + izdelek.imeIzdelka + ": "+ izdelek.zaloga);
+            HelperFunctions.writeInFile(izdelki);
+        }
+        else {
+            System.out.println("Tega izdelka ni v sistemu");
+        }
+    }
 }

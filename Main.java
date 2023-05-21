@@ -30,11 +30,14 @@ public class Main {
                     case 3:
                         Izdelek.productEntry(izdelki);
                         break;
+                    case 4:
+                        Izdelek.productRemove(izdelki);
+                        break;
                 }
 
 
             } catch (Exception e) {
-                System.out.println("exception v Mainu");
+                // System.out.println("exception v Mainu");
     
             }
         }

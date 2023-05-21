@@ -36,6 +36,9 @@ public class Ovitek extends MobilnaOprema {
         float akcijaProcentov = Float.parseFloat(br.readLine());
         System.out.println("Vpiši zalogo");
         int zaloga = Integer.parseInt(br.readLine());
+        if(zaloga < 0) {
+            throw new Exception();
+        }
         System.out.println("Vpisi barvo: ");
         String barva = br.readLine();
 

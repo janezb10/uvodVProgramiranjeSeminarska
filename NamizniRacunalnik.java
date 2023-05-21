@@ -35,6 +35,9 @@ public class NamizniRacunalnik extends Racunalnik{
         float akcijaProcentov = Float.parseFloat(br.readLine());
         System.out.println("Vpiši zalogo");
         int zaloga = Integer.parseInt(br.readLine());
+        if(zaloga < 0) {
+            throw new Exception();
+        }
         System.out.println("Ima namescen operacijski sistem?");
         boolean namescenOperacijskiSistem = Boolean.parseBoolean(br.readLine());
 
