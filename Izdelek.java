@@ -61,31 +61,40 @@ public class Izdelek {
     public static ArrayList<Izdelek> readIzdelki(String datoteka) throws Exception{
         BufferedReader br = new BufferedReader(new FileReader(datoteka));
 
-        ArrayList<Izdelek> izdelkii = new ArrayList<Izdelek>();
+        ArrayList<Izdelek> izdelki = new ArrayList<Izdelek>();
         String s;
         while((s=br.readLine()) != null) {
             String[] arr = s.split(" ");
+            System.out.println(arr[0]);
 
             switch(arr[0]) {
                 case "Ovitek":
-                    izdelkii.add(new Ovitek(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], arr[8] ));
+                    izdelki.add(new Ovitek(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], arr[8] ));
                     break;
                 case "MobilniTelefon":
-                    izdelkii.add(new MobilniTelefon(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], Integer.parseInt(arr[8]) ));
+                    izdelki.add(new MobilniTelefon(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], Integer.parseInt(arr[8]) ));
                     break;
                 case "Slusalke":
-                    izdelkii.add(new Slusalke(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], Boolean.parseBoolean(arr[8]) ));
+                    izdelki.add(new Slusalke(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], Boolean.parseBoolean(arr[8]) ));
                     break;
                 case "NamizniRacunalnik":
-                    izdelkii.add(new NamizniRacunalnik(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], Boolean.parseBoolean(arr[8]) ));
+                    izdelki.add(new NamizniRacunalnik(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], Boolean.parseBoolean(arr[8]) ));
                     break;
                 case "PrenosniRacunalnik":
-                    izdelkii.add(new PrenosniRacunalnik(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], Integer.parseInt(arr[8]) ));
+                    izdelki.add(new PrenosniRacunalnik(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], Integer.parseInt(arr[8]) ));
                     break;
+                case "Monitor":
+                    izdelki.add(new Monitor(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], arr[8] ));
+                    break;
+                case "Projektor":
+                    izdelki.add(new Projektor(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], Integer.parseInt(arr[8]) ));
+                    break;
+                default:
+                    continue;
             }
         }
         br.close();
-        return izdelkii;
+        return izdelki;
     }
 
 
@@ -118,6 +127,7 @@ public class Izdelek {
             System.out.println("Izberi kategorijo: ");
             System.out.println("1 -Mobilna Oprema");
             System.out.println("2 -Računalniki");
+            System.out.println("3 -Video oprema");
             int kategorija = Integer.parseInt(br.readLine());
             switch(kategorija) {
                 case 1:
@@ -125,6 +135,9 @@ public class Izdelek {
                     break;
                 case 2:
                     Racunalnik.productEntry(izdelki, imeIzdelka);
+                    break;
+                case 3:
+                    VideoOprema.productEntry(izdelki, imeIzdelka);
                     break;
             }
         }
