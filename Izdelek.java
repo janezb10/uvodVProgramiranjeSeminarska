@@ -307,7 +307,7 @@ public class Izdelek {
         }
     }
 
-    public static void stanjeBlagajne() throws Exception{
+    public static void stanjeBlagajne() throws Exception {
         BufferedReader brBlagajna = new BufferedReader(new FileReader("blagajna.txt"));
         float skupajZasluzek = Float.parseFloat(brBlagajna.readLine().split(" ")[1]);
         System.out.println();
@@ -323,5 +323,15 @@ public class Izdelek {
             System.out.println("- " + prodaniIzdelki.get(i).imeIzdelka + " kolicina: " + prodaniIzdelki.get(i).zaloga);
         }
         System.out.println();
+    }
+
+    public static void izpisVrnjenih() throws Exception {
+        BufferedReader br = new BufferedReader(new FileReader("vrnjeniIzdelki.txt"));
+        System.out.println();
+        System.out.println("Vrnjeni izdelki: ");
+        String s;
+        while((s=br.readLine()) != null) {
+            System.out.println(s);
+        } 
     }
 }

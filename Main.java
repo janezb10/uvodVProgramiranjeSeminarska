@@ -48,6 +48,8 @@ public class Main {
                     case 7:
                         Izdelek.izpisKupljenih();
                         break;
+                    case 8:
+                        Izdelek.izpisVrnjenih();
                 }
 
 
