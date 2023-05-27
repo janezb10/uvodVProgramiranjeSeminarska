@@ -65,7 +65,6 @@ public class Izdelek {
         String s;
         while((s=br.readLine()) != null) {
             String[] arr = s.split(" ");
-            System.out.println(arr[0]);
 
             switch(arr[0]) {
                 case "Ovitek":
@@ -88,6 +87,15 @@ public class Izdelek {
                     break;
                 case "Projektor":
                     izdelki.add(new Projektor(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], Integer.parseInt(arr[8]) ));
+                    break;
+                case "PomivalniStroj":
+                    izdelki.add(new PomivalniStroj(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), Integer.parseInt(arr[7]), arr[8] ));
+                    break;
+                case "Konzola":
+                    izdelki.add(new Konzola(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), arr[7], arr[8] ));
+                    break;
+                case "Vrtalnik":
+                    izdelki.add(new Vrtalnik(arr[1], Float.parseFloat(arr[2]), Boolean.parseBoolean(arr[3]), Float.parseFloat(arr[4]), Integer.parseInt(arr[5]), Boolean.parseBoolean(arr[7]), Integer.parseInt(arr[8]) ));
                     break;
                 default:
                     continue;
@@ -128,6 +136,10 @@ public class Izdelek {
             System.out.println("1 -Mobilna Oprema");
             System.out.println("2 -Računalniki");
             System.out.println("3 -Video oprema");
+            System.out.println("4 -Gospodinjska oprema");
+            System.out.println("5 -Gaming");
+            System.out.println("6 -Elektricno orodje");
+
             int kategorija = Integer.parseInt(br.readLine());
             switch(kategorija) {
                 case 1:
@@ -138,6 +150,15 @@ public class Izdelek {
                     break;
                 case 3:
                     VideoOprema.productEntry(izdelki, imeIzdelka);
+                    break;
+                case 4:
+                    GospodinjskaOprema.productEntry(izdelki, imeIzdelka);
+                    break;
+                case 5:
+                    Gaming.productEntry(izdelki, imeIzdelka);
+                    break;
+                case 6:
+                    ElektricnoOrodje.productEntry(izdelki, imeIzdelka);
                     break;
             }
         }
@@ -151,7 +172,6 @@ public class Izdelek {
         String imeIzdelka = br.readLine();
         Izdelek izdelek = null;
         for(int i=0; i<izdelki.size(); i++) {
-            // System.out.println(izdelki.get(i).imeIzdelka);
             if(izdelki.get(i).imeIzdelka.equals(imeIzdelka)) {
                 izdelek = izdelki.get(i);
                 break;
@@ -225,6 +245,8 @@ public class Izdelek {
 
     public static void vracilo(ArrayList<Izdelek> izdelki) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+
         System.out.println("Vpisite ime izdelka, ki ga zelite vrniti: ");
         String imeIzdelka = br.readLine();
         System.out.println("Vpisite koliko izdelkov zelite vrniti: ");
@@ -257,18 +279,25 @@ public class Izdelek {
 
         if(izdelek instanceof Izdelek) {
             System.out.println("Izdelek se lahko vrne");
+            
             izdelek.zaloga += kolicina;
             prodaniIzdelek.zaloga -= kolicina;
+
+            // izpisi v file
+            BufferedWriter pwVrnjeniIzdelki = new BufferedWriter(new FileWriter("vrnjeniIzdelki.txt", true));
+            pwVrnjeniIzdelki.write(" \n" + izdelek.imeIzdelka + " - " + kolicina );
+            pwVrnjeniIzdelki.close();
 
             System.out.println("Nova zaloga izdelka " + izdelek.imeIzdelka + ": "+ izdelek.zaloga);
             HelperFunctions.writeInFileSold(prodaniIzdelek, -kolicina);
             
+
             BufferedReader brBlagajna = new BufferedReader(new FileReader("blagajna.txt"));
             float skupajZasluzek = Float.parseFloat(brBlagajna.readLine().split(" ")[1]);
             brBlagajna.close();
             skupajZasluzek -= izdelek.vAkciji ? (kolicina * izdelek.cena * izdelek.akcijaProcentov) : (kolicina * izdelek.cena);
-            BufferedWriter bwBlagajna = new BufferedWriter(new FileWriter("blagajna.txt"));
             String skupajZasluzekString = "SkupajZasluzek= " + skupajZasluzek;
+            BufferedWriter bwBlagajna = new BufferedWriter(new FileWriter("blagajna.txt"));
             bwBlagajna.write(skupajZasluzekString);
             bwBlagajna.close();
             HelperFunctions.writeInFile(izdelki);
@@ -276,5 +305,23 @@ public class Izdelek {
         else {
             System.out.println("Tega ne prodajamo");
         }
+    }
+
+    public static void stanjeBlagajne() throws Exception{
+        BufferedReader brBlagajna = new BufferedReader(new FileReader("blagajna.txt"));
+        float skupajZasluzek = Float.parseFloat(brBlagajna.readLine().split(" ")[1]);
+        System.out.println();
+        System.out.println("trenutno stanje blagajne: " + skupajZasluzek);
+    }
+
+    public static void izpisKupljenih() throws Exception {
+        System.out.println();
+        System.out.println("Prodani izdelki: ");
+        ArrayList<Izdelek> prodaniIzdelki = Izdelek.readIzdelki("prodaniIzdelki.txt");
+
+        for(int i=0; i<prodaniIzdelki.size(); i++) {
+            System.out.println("- " + prodaniIzdelki.get(i).imeIzdelka + " kolicina: " + prodaniIzdelki.get(i).zaloga);
+        }
+        System.out.println();
     }
 }

@@ -1,27 +1,27 @@
 import java.io.*;
 import java.util.*;
 
-public class Monitor extends VideoOprema {
+public class PomivalniStroj extends GospodinjskaOprema {
     public String podkategorija;
-    public String tehnologijaZaslona;
+    public String energijskiRazred;
 
-    public Monitor(
+    public PomivalniStroj(
         String imeIzdelka,
         float cena,
         boolean vAkciji,
         float akcijaProcentov,
         int zaloga,
-        String locljivost,
-        String tehnologijaZaslona) {
+        int garancijaMeseci,
+        String energijskiRazred) {
 
-            super(imeIzdelka, cena, vAkciji, akcijaProcentov, zaloga, locljivost);
-            this.podkategorija = "Monitor";
-            this.tehnologijaZaslona = tehnologijaZaslona;
+            super(imeIzdelka, cena, vAkciji, akcijaProcentov, zaloga, garancijaMeseci);
+            this.podkategorija = "PomivalniStroj";
+            this.energijskiRazred = energijskiRazred;
     }
 
     @Override
     public String toString() {
-        return this.podkategorija + " " + this.imeIzdelka + " " + this.cena + " " + this.vAkciji + " " + this.akcijaProcentov + " " + this.zaloga + " " + this.kategorija + " " + this.locljivost + " " + this.tehnologijaZaslona;
+        return this.podkategorija + " " + this.imeIzdelka + " " + this.cena + " " + this.vAkciji + " " + this.akcijaProcentov + " " + this.zaloga + " " + this.kategorija + " " + this.garancijaMeseci + " " + this.energijskiRazred;
     }
 
     @Override
@@ -34,12 +34,12 @@ public class Monitor extends VideoOprema {
         str += " kategorija: " + this.kategorija;
         str += " podkategorija: " + this.podkategorija;
 
-        str += " locljivost: " + this.locljivost;
-        str += " tehnologija zaslona: " + this.tehnologijaZaslona;
+        str += " meseci garancije: " + this.garancijaMeseci;
+        str += " energijski razred: " + this.energijskiRazred;
         return str;
     }
 
-    public static void novMonitor(ArrayList<Izdelek> izdelki, String imeIzdelka, String locljivost) throws Exception{
+    public static void novPomivalniStroj(ArrayList<Izdelek> izdelki, String imeIzdelka, int garancijaMeseci) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         System.out.println("Vnesi ceno: ");
@@ -53,10 +53,10 @@ public class Monitor extends VideoOprema {
         if(zaloga < 0) {
             throw new Exception();
         }
-        System.out.println("Vpisi tehnologijo zaslona:");
-        String tehnologijaZaslona = br.readLine();
+        System.out.println("Vpisi energijski razred:");
+        String energijskiRazred = br.readLine();
 
-        Monitor izdelek = new Monitor(imeIzdelka, cena, vAkciji, akcijaProcentov, zaloga, locljivost, tehnologijaZaslona);
+        PomivalniStroj izdelek = new PomivalniStroj(imeIzdelka, cena, vAkciji, akcijaProcentov, zaloga, garancijaMeseci, energijskiRazred);
         izdelki.add(izdelek);
         HelperFunctions.writeInFile(izdelki);
         System.out.println("Izdelek vnešen");

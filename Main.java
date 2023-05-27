@@ -42,6 +42,12 @@ public class Main {
                     case 5:
                         Izdelek.vracilo(izdelki);
                         break;
+                    case 6:
+                        Izdelek.stanjeBlagajne();
+                        break;
+                    case 7:
+                        Izdelek.izpisKupljenih();
+                        break;
                 }
 
 

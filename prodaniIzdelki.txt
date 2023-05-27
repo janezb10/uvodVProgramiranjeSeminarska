@@ -1,3 +1,1 @@
-MobilniTelefon Iphone 990.0 false 0.0 1 MobilnaOprema Apple 1500
-Ovitek Lepi 9.0 false 0.0 0 MobilnaOprema Kinezar Rdeca
-NamizniRacunalnik thor5 1000.0 true 0.5 0 Racunalniki intel true
+Vrtalnik DeWalt 345.0 true 0.1 13 ElektricnoOrodje true 460

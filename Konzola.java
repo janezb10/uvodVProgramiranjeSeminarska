@@ -1,27 +1,27 @@
 import java.io.*;
 import java.util.*;
 
-public class Monitor extends VideoOprema {
+public class Konzola extends Gaming {
     public String podkategorija;
-    public String tehnologijaZaslona;
+    public String tipKonzole;
 
-    public Monitor(
+    public Konzola(
         String imeIzdelka,
         float cena,
         boolean vAkciji,
         float akcijaProcentov,
         int zaloga,
-        String locljivost,
-        String tehnologijaZaslona) {
+        String povezljivost,
+        String tipKonzole) {
 
-            super(imeIzdelka, cena, vAkciji, akcijaProcentov, zaloga, locljivost);
-            this.podkategorija = "Monitor";
-            this.tehnologijaZaslona = tehnologijaZaslona;
+            super(imeIzdelka, cena, vAkciji, akcijaProcentov, zaloga, povezljivost);
+            this.podkategorija = "Konzola";
+            this.tipKonzole = tipKonzole;
     }
 
     @Override
     public String toString() {
-        return this.podkategorija + " " + this.imeIzdelka + " " + this.cena + " " + this.vAkciji + " " + this.akcijaProcentov + " " + this.zaloga + " " + this.kategorija + " " + this.locljivost + " " + this.tehnologijaZaslona;
+        return this.podkategorija + " " + this.imeIzdelka + " " + this.cena + " " + this.vAkciji + " " + this.akcijaProcentov + " " + this.zaloga + " " + this.kategorija + " " + this.povezljivost + " " + this.tipKonzole;
     }
 
     @Override
@@ -34,12 +34,12 @@ public class Monitor extends VideoOprema {
         str += " kategorija: " + this.kategorija;
         str += " podkategorija: " + this.podkategorija;
 
-        str += " locljivost: " + this.locljivost;
-        str += " tehnologija zaslona: " + this.tehnologijaZaslona;
+        str += " povezljivos: " + this.povezljivost;
+        str += " tip konzole: " + this.tipKonzole;
         return str;
     }
 
-    public static void novMonitor(ArrayList<Izdelek> izdelki, String imeIzdelka, String locljivost) throws Exception{
+    public static void novKonzola(ArrayList<Izdelek> izdelki, String imeIzdelka, String povezljivost) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         System.out.println("Vnesi ceno: ");
@@ -53,10 +53,10 @@ public class Monitor extends VideoOprema {
         if(zaloga < 0) {
             throw new Exception();
         }
-        System.out.println("Vpisi tehnologijo zaslona:");
-        String tehnologijaZaslona = br.readLine();
+        System.out.println("Vpisi tip konzole:");
+        String tipKonzole = br.readLine();
 
-        Monitor izdelek = new Monitor(imeIzdelka, cena, vAkciji, akcijaProcentov, zaloga, locljivost, tehnologijaZaslona);
+        Konzola izdelek = new Konzola(imeIzdelka, cena, vAkciji, akcijaProcentov, zaloga, povezljivost, tipKonzole);
         izdelki.add(izdelek);
         HelperFunctions.writeInFile(izdelki);
         System.out.println("Izdelek vnešen");
