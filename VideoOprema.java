@@ -18,6 +18,12 @@ public class VideoOprema extends Izdelek{
             this.locljivost = locljivost;
     }
 
+    @Override
+    public String getKategorija() {
+        return this.kategorija;
+    }
+
+
     public static void productEntry(ArrayList<Izdelek> izdelki, String imeIzdelka) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 

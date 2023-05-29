@@ -378,39 +378,56 @@ public class Izdelek {
                             }
                         }
                         break;
-                    // case 2:
-                    //     System.out.println("MobilnaOprema:");
-                    //     for(int i=0; i<izdelki.size(); i++) {
-                    //         if(izdelki.get(i).kategorija == "MobilnaOprema") {
-                    //             System.out.println(izdelki.get(i).izpisi());
-                    //         }
-                    //     }
-                    //     break;
-                    // case 3:
-                    //     System.out.println("VideoOprema:");
-                    //     for(int i=0; i<izdelki.size(); i++) {
-                    //         if(izdelki.get(i).kategorija == "VideoOprema") {
-                    //             System.out.println(izdelki.get(i).izpisi());
-                    //         }
-                    //     }
-                    //     break;
-                    // case 4:
-                    //     System.out.println("GospodinjskaOprema:");
-                    //     for(int i=0; i<izdelki.size(); i++) {
-                    //         if(izdelki.get(i).vAkciji) {
-                    //             System.out.println(izdelki.get(i).izpisi());
-                    //         }
-                    //     }
-                    //     break;
-                    // case 5:
-                    //     break;
-                    // case 6:
-                    //     break;
+                    case 2:
+                        System.out.println("MobilnaOprema:");
+                        for(int i=0; i<izdelki.size(); i++) {
+                            if(izdelki.get(i).getKategorija() == "MobilnaOprema") {
+                                System.out.println(izdelki.get(i).izpisi());
+                            }
+                        }
+                        break;
+                    case 3:
+                        System.out.println("VideoOprema:");
+                        for(int i=0; i<izdelki.size(); i++) {
+                            if(izdelki.get(i).getKategorija() == "VideoOprema") {
+                                System.out.println(izdelki.get(i).izpisi());
+                            }
+                        }
+                        break;
+                    case 4:
+                        System.out.println("GospodinjskaOprema:");
+                        for(int i=0; i<izdelki.size(); i++) {
+                            if(izdelki.get(i).getKategorija() == "GospodinjskaOprema") {
+                                System.out.println(izdelki.get(i).izpisi());
+                            }
+                        }
+                        break;
+                    case 5:
+                        System.out.println("Gaming:");
+                        for(int i=0; i<izdelki.size(); i++) {
+                            if(izdelki.get(i).getKategorija() == "Gaming") {
+                                System.out.println(izdelki.get(i).izpisi());
+                            }
+                        }
+                        break;
+                    case 6:
+                        System.out.println("ElektricnoOrodje:");
+                        for(int i=0; i<izdelki.size(); i++) {
+                            if(izdelki.get(i).getKategorija() == "ElektricnoOrodje") {
+                                System.out.println(izdelki.get(i).izpisi());
+                            }
+                        }
+                        break;
                 }
 
                 break;
             case 3:
-
+                System.out.println("Izdelki ki so na zalogi: ");
+                for(int i=0; i<izdelki.size(); i++) {
+                    if(izdelki.get(i).zaloga > 0) {
+                        System.out.println(izdelki.get(i).izpisi());
+                    }
+                }
                 break;
         }
 

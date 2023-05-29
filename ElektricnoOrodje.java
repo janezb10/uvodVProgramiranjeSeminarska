@@ -18,6 +18,11 @@ public class ElektricnoOrodje extends Izdelek {
             this.naBaterije = naBaterije;
         }
 
+    @Override
+    public String getKategorija() {
+        return this.kategorija;
+    }
+    
     
     public static void productEntry(ArrayList<Izdelek> izdelki, String imeIzdelka) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
