@@ -52,13 +52,13 @@ public class Main {
                         Izdelek.izpisVrnjenih();
                         break;
                     case 9:
-                        Izdelek.iskanje();
+                        Izdelek.iskanje(izdelki);
                         break;
                 }
 
 
             } catch (Exception e) {
-                // System.out.println("exception v Mainu");
+                System.out.println("Napaka");
     
             }
         }

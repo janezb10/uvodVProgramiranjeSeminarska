@@ -18,6 +18,11 @@ public class Racunalnik extends Izdelek{
             this.procesor = procesor;
     }
 
+    @Override
+    public String getKategorija() {
+        return this.kategorija;
+    }
+
     public static void productEntry(ArrayList<Izdelek> izdelki, String imeIzdelka) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 

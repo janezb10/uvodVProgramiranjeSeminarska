@@ -7,6 +7,7 @@ public class Izdelek {
     boolean vAkciji;
     float akcijaProcentov;
     int zaloga;
+    // String kategorija;
 
     public Izdelek(
         String imeIzdelka,
@@ -20,6 +21,7 @@ public class Izdelek {
         this.vAkciji = vAkciji;
         this.akcijaProcentov = akcijaProcentov;
         this.zaloga = zaloga;
+        // this.kategorija = "";
     }
 
     public void setImeIzdelka(String imeIzdelka) {
@@ -335,7 +337,82 @@ public class Izdelek {
         } 
     }
 
-    public static void iskanje() throws Exception {
-        
+    public String getKategorija() {
+        return "";
+    }
+
+    public static void iskanje(ArrayList<Izdelek> izdelki) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println();
+        System.out.println("Iskanje");
+        System.out.println("Kaj zelite iskati: ");
+        System.out.println("1 -Isci artikle v akciji");
+        System.out.println("2 -Isci artikle glede na tip");
+        System.out.println("3 -Isci artikle ki so na zalogi");
+
+        int inp = Integer.parseInt(br.readLine());
+        switch(inp) {
+            case 1:
+                System.out.println("Izdelki v akciji: ");
+                for(int i=0; i<izdelki.size(); i++) {
+                    if(izdelki.get(i).vAkciji) {
+                        System.out.println(izdelki.get(i).izpisi());
+                    }
+                }
+                break;
+            case 2:
+                System.out.println("Iskanje izdelkov glede na kategorijo:");
+                System.out.println("1 -Racunalniki");
+                System.out.println("2 -MobilnaOprema");
+                System.out.println("3 -VideoOprema");
+                System.out.println("4 -GospodinjskaOprema");
+                System.out.println("5 -Gaming");
+                System.out.println("6 -ElektricnoOrodje");
+                int inp2 = Integer.parseInt(br.readLine());
+                switch(inp2) {
+                    case 1:
+                        System.out.println("Racunalniki:");
+                        for(int i=0; i<izdelki.size(); i++) {
+                            if(izdelki.get(i).getKategorija() == "Racunalniki") {
+                                System.out.println(izdelki.get(i).izpisi());
+                            }
+                        }
+                        break;
+                    // case 2:
+                    //     System.out.println("MobilnaOprema:");
+                    //     for(int i=0; i<izdelki.size(); i++) {
+                    //         if(izdelki.get(i).kategorija == "MobilnaOprema") {
+                    //             System.out.println(izdelki.get(i).izpisi());
+                    //         }
+                    //     }
+                    //     break;
+                    // case 3:
+                    //     System.out.println("VideoOprema:");
+                    //     for(int i=0; i<izdelki.size(); i++) {
+                    //         if(izdelki.get(i).kategorija == "VideoOprema") {
+                    //             System.out.println(izdelki.get(i).izpisi());
+                    //         }
+                    //     }
+                    //     break;
+                    // case 4:
+                    //     System.out.println("GospodinjskaOprema:");
+                    //     for(int i=0; i<izdelki.size(); i++) {
+                    //         if(izdelki.get(i).vAkciji) {
+                    //             System.out.println(izdelki.get(i).izpisi());
+                    //         }
+                    //     }
+                    //     break;
+                    // case 5:
+                    //     break;
+                    // case 6:
+                    //     break;
+                }
+
+                break;
+            case 3:
+
+                break;
+        }
+
     }
 }
