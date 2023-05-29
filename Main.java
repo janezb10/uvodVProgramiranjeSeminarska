@@ -50,6 +50,10 @@ public class Main {
                         break;
                     case 8:
                         Izdelek.izpisVrnjenih();
+                        break;
+                    case 9:
+                        Izdelek.iskanje();
+                        break;
                 }
 
 

@@ -334,4 +334,8 @@ public class Izdelek {
             System.out.println(s);
         } 
     }
+
+    public static void iskanje() throws Exception {
+        
+    }
 }
