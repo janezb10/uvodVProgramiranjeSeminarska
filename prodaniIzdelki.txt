@@ -1,2 +1,2 @@
-PrenosniRacunalnik Aspire5 700.0 false 0.0 3 Racunalniki AMD 15
+PrenosniRacunalnik Aspire5 700.0 false 0.0 2 Racunalniki AMD 15
 Vrtalnik DeWalt 345.0 true 0.1 13 ElektricnoOrodje true 460
