@@ -10,7 +10,6 @@ public class HelperFunctions {
         for(int i=0; i<izdelki.size(); i++) {
             str += (izdelki.get(i) + "\n");
         }
-        
         bw.write(str);
         bw.close();
     }
